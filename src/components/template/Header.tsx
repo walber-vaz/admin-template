@@ -1,6 +1,7 @@
 import { useAppData } from "@/data/hooks/useAppData"
 import Button from "./Button"
 import Title from "./Title"
+import AvatarUser from "./AvatarUser"
 
 interface HeaderProps {
   title: string
@@ -19,8 +20,9 @@ export default function Header({ title, subtitle }: HeaderProps): JSX.Element {
   return (
     <header className="flex">
       <Title title={title} subtitle={subtitle} />
-      <div className="flex flex-grow justify-end">
+      <div className="flex flex-grow justify-end items-center">
         <Button theme={theme} altTheme={altTheme} />
+        <AvatarUser className="ml-4" />
       </div>
     </header>
   )

@@ -12,9 +12,8 @@ export default function profile(): JSX.Element {
   const { altTheme } = useAppData()
 
   return (
-    <Layout title="Profile" subtitle="Profile">
-      <h1>Profile</h1>
-      <button onClick={altTheme}>Alterar Tema</button>
+    <Layout title="Perfil de Usuário" subtitle="Gerencie suas informações de usuário">
+      <h1>Perfil</h1>
     </Layout>
   )
 }
