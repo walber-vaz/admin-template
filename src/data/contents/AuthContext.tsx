@@ -14,25 +14,29 @@ interface AuthProviderProps {
 
 const AuthContext = createContext<AuthContextProps>({})
 
-// const formatUser = async (user: firebase.User): Promise<User> => {
-//   const token = await user.getIdToken()
-//   return {
-//     uid: user.uid,
-//     email: user.email,
-//     name: user.displayName,
-//     token,
-//     provider: user.providerData[0]?.providerId,
-//     imageUrl: user.photoURL
-//   }
-// }
+const formatUser = async (user: firebase.User): Promise<User> => {
+  const token = await user.getIdToken()
+  return {
+    uid: user.uid,
+    email: user.email ?? '',
+    name: user.displayName ?? '',
+    token,
+    provider: user.providerData[0]?.providerId ?? '',
+    imageUrl: user.photoURL ?? ''
+  }
+}
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User>()
 
   const loginGoogle = async () => {
-    router.push('/')
+    const response = await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    if (response.user?.email) {
+      const user = await formatUser(response.user as firebase.User)
+      setUser(user)
+      router.push('/')
+    }
   }
-
 
   return (
     <AuthContext.Provider value={{
