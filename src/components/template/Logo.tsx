@@ -1,3 +1,8 @@
+/**
+ * Renders the logo as a JSX element.
+ *
+ * @return {JSX.Element} The logo element.
+ */
 export default function Logo(): JSX.Element {
   return (
     <div className={`

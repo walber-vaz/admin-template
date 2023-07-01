@@ -7,11 +7,7 @@ module.exports = {
   ],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['var(--font-poppins)'],
-      },
-    },
+    extend: {},
   },
   plugins: [],
 }
