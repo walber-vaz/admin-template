@@ -3,18 +3,35 @@ import { ExclamationTriangleIcon } from "@/components/icons";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function auth() {
+/**
+ * Renders the authentication form.
+ *
+ * @returns {JSX.Element} The rendered authentication form.
+ */
+export default function auth(): JSX.Element {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [mode, setMode] = useState<'login' | 'register'>('login')
   const [error, setError] = useState("")
 
-  const showError = (message: string, timeInSeconds: number = 5) => {
+  /**
+   * Shows an error message for a specified duration.
+   *
+   * @param {string} message - the error message to display
+   * @param {number} timeInSeconds - the duration in seconds for the error message to be displayed (default: 5)
+   * @return {void}
+   */
+  const showError = (message: string, timeInSeconds: number = 5): void => {
     setError(message)
     setTimeout(() => setError(''), timeInSeconds * 1000)
   }
 
-  const handleSubmit = () => {
+  /**
+   * Handle the form submission based on the mode.
+   *
+   * @return {void}
+   */
+  const handleSubmit = (): void => {
     if (mode === 'login') {
       console.log('login')
       showError('Erro ao fazer login')
