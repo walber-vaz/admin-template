@@ -1,7 +1,8 @@
 import User from "@/model/User"
 import router from "next/router"
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import firebase from '@/firebase/config';
+import Cookies from 'js-cookie'
 
 interface AuthContextProps {
   user?: User;
@@ -26,17 +27,45 @@ const formatUser = async (user: firebase.User): Promise<User> => {
   }
 }
 
+const genCookie = (login: boolean) => {
+  if (login) {
+    Cookies.set('admin-template-w2k-auth', login ? 'true' : 'false', {
+      expires: 7
+    })
+  } else {
+    Cookies.remove('admin-template-w2k-auth')
+  }
+}
+
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<User>()
+  const [loading, setLoading] = useState<boolean>(true)
+
+  const sessionUser = async (user: firebase.User | null) => {
+    if (user?.email) {
+      const userFormated = await formatUser(user)
+      setUser(userFormated)
+      genCookie(true)
+      setLoading(false)
+      return userFormated.email
+    } else {
+      setUser(undefined)
+      genCookie(false)
+      setLoading(false)
+      return false
+    }
+  }
 
   const loginGoogle = async () => {
     const response = await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
-    if (response.user?.email) {
-      const user = await formatUser(response.user as firebase.User)
-      setUser(user)
-      router.push('/')
-    }
+    await sessionUser(response.user)
+    router.push('/')
   }
+
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onIdTokenChanged(sessionUser)
+    return () => unsubscribe()
+  }, [])
 
   return (
     <AuthContext.Provider value={{
