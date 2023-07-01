@@ -1,3 +1,4 @@
+import Layout from '@/components/template/Layout'
 import React from 'react'
 
 /**
@@ -7,6 +8,8 @@ import React from 'react'
  */
 export default function index(): JSX.Element {
   return (
-    <h1>index</h1>
+    <Layout title="Home" subtitle="Home page">
+      <h3>Home</h3>
+    </Layout>
   )
 }
