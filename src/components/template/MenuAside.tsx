@@ -1,7 +1,12 @@
 import { HomeIcon, AdjustmentsHorizontalIcon } from "../icons";
 import MenuItem from "./MenuItem";
 
-export default function MenuAside() {
+/**
+ * Renders the menu aside component.
+ *
+ * @return {JSX.Element} The rendered menu aside component.
+ */
+export default function MenuAside(): JSX.Element {
   return (
     <aside>
       <ul>
