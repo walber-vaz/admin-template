@@ -16,12 +16,16 @@ interface LayoutProps {
  */
 export default function Layout({ title, subtitle, children }: LayoutProps): JSX.Element {
   return (
-    <section>
+    <section className={`
+      flex w-screen h-screen
+    `}>
       <MenuAside />
-      <Header title={title} subtitle={subtitle} />
-      <Content>
-        {children}
-      </Content>
-    </section>
+      <div className={`flex flex-col w-full p-7 bg-gray-300`}>
+        <Header title={title} subtitle={subtitle} />
+        <Content>
+          {children}
+        </Content>
+      </div>
+    </section >
   )
 }
