@@ -1,3 +1,5 @@
+import { useAppData } from "@/data/hooks/useAppData"
+import Button from "./Button"
 import Title from "./Title"
 
 interface HeaderProps {
@@ -12,9 +14,14 @@ interface HeaderProps {
  * @return {JSX.Element} The rendered layout component.
  */
 export default function Header({ title, subtitle }: HeaderProps): JSX.Element {
+  const { theme, altTheme } = useAppData()
+
   return (
-    <header>
+    <header className="flex">
       <Title title={title} subtitle={subtitle} />
+      <div className="flex flex-grow justify-end">
+        <Button theme={theme} altTheme={altTheme} />
+      </div>
     </header>
   )
 }

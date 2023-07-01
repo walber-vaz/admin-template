@@ -29,8 +29,11 @@ export function AppProvider({ theme, children }: AppContextProps): JSX.Element {
 
   useEffect(() => {
     const localTheme = localStorage.getItem("theme") as TypeTheme;
-    localTheme && setCurrentTheme(localTheme || "")
-  }, [])
+    if (!localTheme) {
+      localStorage.setItem("theme", theme || "")
+    }
+    setCurrentTheme(localTheme)
+  }, [theme])
 
   return (
     <AppContext.Provider value={{ theme: currentTheme, altTheme: toggleTheme }}>
