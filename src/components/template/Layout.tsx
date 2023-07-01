@@ -1,3 +1,4 @@
+import { useAppData } from '@/data/hooks/useAppData'
 import Content from './Content'
 import Header from './Header'
 import MenuAside from './MenuAside'
@@ -15,9 +16,11 @@ interface LayoutProps {
  * @return {JSX.Element} The rendered layout component.
  */
 export default function Layout({ title, subtitle, children }: LayoutProps): JSX.Element {
+  const { theme } = useAppData()
+
   return (
     <section className={`
-      flex w-screen h-screen dark
+      flex w-screen h-screen ${theme}
     `}>
       <MenuAside />
       <div className={`flex flex-col w-full p-7 bg-gray-300 dark:bg-gray-900`}>

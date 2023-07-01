@@ -1,3 +1,4 @@
+import { AppProvider } from '@/data/contents/AppContext'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 
@@ -9,7 +10,9 @@ import type { AppProps } from 'next/app'
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <main>
-      <Component {...pageProps} />
+      <AppProvider>
+        <Component {...pageProps} />
+      </AppProvider>
     </main >
   )
 }

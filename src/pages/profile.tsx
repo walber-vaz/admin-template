@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Layout from '@/components/template/Layout'
+import { useAppData } from '@/data/hooks/useAppData'
 import React from 'react'
 
 /**
@@ -7,9 +9,12 @@ import React from 'react'
  * @return {JSX.Element} The rendered index component.
  */
 export default function profile(): JSX.Element {
+  const { altTheme } = useAppData()
+
   return (
     <Layout title="Profile" subtitle="Profile">
-      <h3>Profile</h3>
+      <h1>Profile</h1>
+      <button onClick={altTheme}>Alterar Tema</button>
     </Layout>
   )
 }
