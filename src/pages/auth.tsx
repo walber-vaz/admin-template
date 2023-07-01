@@ -1,5 +1,6 @@
 import AuthInput from "@/components/auth/AuthInput";
 import { ExclamationTriangleIcon } from "@/components/icons";
+import { useAuth } from "@/data/hooks/useAuth";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -9,6 +10,7 @@ import { useState } from "react";
  * @returns {JSX.Element} The rendered authentication form.
  */
 export default function auth(): JSX.Element {
+  const { user, loginGoogle } = useAuth()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [mode, setMode] = useState<'login' | 'register'>('login')
@@ -90,7 +92,7 @@ export default function auth(): JSX.Element {
         </button>
         <hr className="my-6 border-gray-300 w-full" />
         <button
-          onClick={handleSubmit}
+          onClick={loginGoogle}
           className={`
             w-full bg-transparent border-2 border-red-500 hover:border-red-400
             text-gray-400 rounded-lg px-4 py-3 font-semibold flex justify-center

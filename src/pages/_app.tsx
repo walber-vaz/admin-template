@@ -1,4 +1,5 @@
 import { AppProvider } from '@/data/contents/AppContext'
+import { AuthProvider } from '@/data/contents/AuthContext'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 
@@ -10,9 +11,11 @@ import type { AppProps } from 'next/app'
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <main>
-      <AppProvider>
-        <Component {...pageProps} />
-      </AppProvider>
+      <AuthProvider>
+        <AppProvider>
+          <Component {...pageProps} />
+        </AppProvider>
+      </AuthProvider>
     </main >
   )
 }
