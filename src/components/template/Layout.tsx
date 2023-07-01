@@ -20,7 +20,7 @@ export default function Layout({ title, subtitle, children }: LayoutProps): JSX.
       flex w-screen h-screen
     `}>
       <MenuAside />
-      <div className={`flex flex-col w-full p-7 bg-gray-300`}>
+      <div className={`flex flex-col w-full p-7 bg-gray-300 dark:bg-gray-900`}>
         <Header title={title} subtitle={subtitle} />
         <Content>
           {children}
