@@ -24,16 +24,22 @@ export default function MenuItem({ url, text, icon, onClick, className }: MenuIt
    */
   const renderLink = (): JSX.Element => (
     <p className={`
-      flex flex-col justify-center items-center h-20 w-20 text-gray-600
+      flex flex-col justify-center items-center h-20 w-20
       ${className}
     `}>
       {icon}
-      <span className="text-xs font-light">{text}</span>
+      <span className="text-sm font-light">{text}</span>
     </p>
   );
 
   return (
-    <li className="hover:bg-gray-100 cursor-pointer" onClick={onClick}>
+    <li
+      className={`
+      hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer
+        transition duration-500 ease-in-out
+      `}
+      onClick={onClick}
+    >
       {url ? (
         <Link href={url} className="flex flex-col justify-center items-center h-20 w-20">
           {renderLink()}

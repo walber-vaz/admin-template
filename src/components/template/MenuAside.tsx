@@ -9,7 +9,9 @@ import MenuItem from "./MenuItem";
  */
 export default function MenuAside(): JSX.Element {
   return (
-    <aside className="flex flex-col">
+    <aside className={`
+      flex flex-col dark:bg-gray-900 dark:text-gray-200 bg-gray-100 text-gray-700
+    `}>
       <div className={`
         flex flex-col items-center justify-center
         bg-gradient-to-r from-blue-500 to-purple-800
@@ -24,7 +26,8 @@ export default function MenuAside(): JSX.Element {
       <ul>
         <MenuItem
           className={`
-            text-red-600 hover:bg-red-400 hover:text-white transition duration-500 ease-in-out
+            text-red-500 hover:bg-red-400 hover:text-white dark:hover:text-gray-800
+            transition duration-500 ease-in-out
           `}
           onClick={() => console.log("logout")}
           text="Logout"

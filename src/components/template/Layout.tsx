@@ -17,7 +17,7 @@ interface LayoutProps {
 export default function Layout({ title, subtitle, children }: LayoutProps): JSX.Element {
   return (
     <section className={`
-      flex w-screen h-screen
+      flex w-screen h-screen dark
     `}>
       <MenuAside />
       <div className={`flex flex-col w-full p-7 bg-gray-300 dark:bg-gray-900`}>
