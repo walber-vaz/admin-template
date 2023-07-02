@@ -1,38 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  <img src="./amostra.gif" alt="amostra" width="600px">
 
-## Getting Started
+  <h1>📚📖📚</h1>
+  <h2>Projeto de Autenticação com Next.js, TypeScript e Firebase</h2>
+</div>
 
-First, run the development server:
+## 📚 Sobre o projeto
+
+Este projeto foi desenvolvido com o objetivo de aprender a utilizar o framework Next.js em conjunto com o TypeScript. Além disso, exploramos a implementação de autenticação utilizando o serviço Firebase da Google. Para facilitar o processo de autenticação, utilizamos a biblioteca JS-Cookie para gerenciar os cookies.
+
+## 📚 Funcionalidades
+
+O projeto possui as seguintes funcionalidades:
+
+- [x] Autenticação com Google: Os usuários podem realizar login através da conta do Google.
+- [x] Gerenciamento de Usuários: Após o login, os usuários têm a capacidade de adicionar e remover outros usuários.
+- [x] Autenticação com E-mail e Senha: Os usuários também podem optar por se cadastrar utilizando um e-mail e senha.
+- [x] Logout: Os usuários podem realizar logout da aplicação.
+
+## 📚 To-Do
+
+- [ ] Adicionar a funcionalidade de editar usuários.
+- [ ] Adicionar a funcionalidade de editar o perfil do usuário.
+- [ ] Adicionar a funcionalidade de resetar a senha do usuário.
+- [ ] Implementar tela de profile.
+
+## 📚 Tecnologias utilizadas
+
+- [Next.js](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Firebase](https://firebase.google.com/)
+- [Tailwindcss](https://tailwindcss.com/)
+- [Heroicons](https://heroicons.com/)
+- [JS-Cookie](https://www.npmjs.com/package/js-cookie)
+
+## 📚 Como executar o projeto
+
+Siga as etapas abaixo para executar o projeto em seu ambiente de desenvolvimento:
 
 ```bash
-npm run dev
-# or
+# Clonar o repositório
+git clone git@github.com:walber-vaz/admin-template.git
+
+# Entrar no diretório
+cd admin-template
+
+# Adicionar as variáveis de ambiente
+cp .env.example .env.local
+
+# Instalar as dependências
+yarn install
+
+# Iniciar o projeto
 yarn dev
-# or
-pnpm dev
+
+# O projeto irá iniciar em http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📚 Como contribuir para o projeto
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. Faça um fork do projeto.
+2. Crie uma nova branch com suas alterações: `git checkout -b my-feature`
+3. Salve suas alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: My new feature"`
+4. Envie suas alterações: `git push origin my-feature`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 📚 Licença
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para mais detalhes.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Feito com 💙 by [Walber Vaz](https://walbervazdev.com.br)

@@ -3,7 +3,14 @@ import { useAuth } from "@/data/hooks/useAuth"
 import Head from "next/head"
 import router from 'next/router'
 
-export default function ForceAuth({ children }: { children: React.ReactNode }) {
+/**
+ * Renders the component that forces authentication.
+ *
+ * @param {Object} props - The component's props.
+ * @param {React.ReactNode} props.children - The child elements.
+ * @return {React.ReactNode} The rendered content.
+ */
+export default function ForceAuth({ children }: { children: React.ReactNode }): React.ReactNode {
   const { user, loading } = useAuth()
   const { theme } = useAppData()
 

@@ -1,7 +1,5 @@
 import { ReactNode, createContext, useCallback, useEffect, useState } from "react"
 
-// type TypeTheme = "dark" | ""
-
 interface AppContextProps {
   theme?: string
   altTheme?: () => void

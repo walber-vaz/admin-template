@@ -4,9 +4,11 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 
 /**
- * A React component that renders the App.
- * @param {AppProps} Component - The component to render.
- * @return {JSX.Element} The rendered component.
+ * Renders the main application component.
+ *
+ * @param {Object} Component - The component to render.
+ * @param {Object} pageProps - The props for the component.
+ * @return {JSX.Element} The rendered application component.
  */
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (

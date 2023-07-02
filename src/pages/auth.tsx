@@ -10,7 +10,7 @@ import { useState } from "react";
  * @returns {JSX.Element} The rendered authentication form.
  */
 export default function auth(): JSX.Element {
-  const { user, loginGoogle } = useAuth()
+  const { loginEmailPassword, entryLoginEmailPassword, loginGoogle } = useAuth()
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [mode, setMode] = useState<'login' | 'register'>('login')
@@ -29,17 +29,23 @@ export default function auth(): JSX.Element {
   }
 
   /**
-   * Handle the form submission based on the mode.
+   * Handles the form submission asynchronously.
    *
-   * @return {void}
+   * @return {Promise<void>} - A promise that resolves to void.
    */
-  const handleSubmit = (): void => {
-    if (mode === 'login') {
-      console.log('login')
-      showError('Erro ao fazer login')
-    } else {
-      console.log('register')
-      showError('Erro ao realizar cadastro')
+  const handleSubmit = async (): Promise<void> => {
+    const errorMessage = mode === 'login' ? 'Erro ao autenticar' : 'Erro ao cadastrar'
+    try {
+      if (mode === 'login' && loginEmailPassword) {
+        await loginEmailPassword(email, password)
+      }
+      if (mode === 'register' && entryLoginEmailPassword) {
+        await entryLoginEmailPassword(email, password)
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        showError(errorMessage)
+      }
     }
   }
 
