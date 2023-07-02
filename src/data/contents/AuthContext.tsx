@@ -1,12 +1,13 @@
-import User from "@/model/User"
-import router from "next/router"
-import { createContext, useEffect, useState } from "react"
 import firebase from '@/firebase/config';
-import Cookies from 'js-cookie'
+import User from "@/model/User";
+import Cookies from 'js-cookie';
+import router from "next/router";
+import { createContext, useEffect, useState } from "react";
 
 interface AuthContextProps {
   user?: User;
   loginGoogle?: () => Promise<void>;
+  logout?: () => Promise<void>;
 }
 
 interface AuthProviderProps {
@@ -57,20 +58,39 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }
 
   const loginGoogle = async () => {
-    const response = await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
-    await sessionUser(response.user)
-    router.push('/')
+    try {
+      setLoading(true)
+      const response = await firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      await sessionUser(response.user)
+      router.push('/')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const logout = async () => {
+    try {
+      setLoading(true)
+      await firebase.auth().signOut()
+      await sessionUser(null)
+      router.push('/auth')
+    } finally {
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onIdTokenChanged(sessionUser)
-    return () => unsubscribe()
+    if (Cookies.get('admin-template-w2k-auth')) {
+      const cancel = firebase.auth().onIdTokenChanged(sessionUser)
+      return () => cancel()
+    }
   }, [])
 
   return (
     <AuthContext.Provider value={{
       user,
-      loginGoogle
+      loginGoogle,
+      logout
     }}>
       {children}
     </AuthContext.Provider>

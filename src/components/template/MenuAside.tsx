@@ -1,4 +1,5 @@
-import { HomeIcon, AdjustmentsHorizontalIcon, ArrowLeftOnRectangleIcon } from "../icons";
+import { useAuth } from "@/data/hooks/useAuth";
+import { AdjustmentsHorizontalIcon, ArrowLeftOnRectangleIcon, HomeIcon } from "../icons";
 import Logo from "./Logo";
 import MenuItem from "./MenuItem";
 
@@ -8,6 +9,8 @@ import MenuItem from "./MenuItem";
  * @return {JSX.Element} The rendered menu aside component.
  */
 export default function MenuAside(): JSX.Element {
+  const { logout } = useAuth()
+
   return (
     <aside className={`
       flex flex-col dark:bg-gray-900 dark:text-gray-200 bg-gray-100 text-gray-700
@@ -29,7 +32,7 @@ export default function MenuAside(): JSX.Element {
             text-red-500 hover:bg-red-400 hover:text-white dark:hover:text-gray-800
             transition duration-500 ease-in-out
           `}
-          onClick={() => console.log("logout")}
+          onClick={logout}
           text="Logout"
           icon={<ArrowLeftOnRectangleIcon className="h-6 w-6" />}
         />
