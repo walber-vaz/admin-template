@@ -6,6 +6,7 @@ import { createContext, useEffect, useState } from "react";
 
 interface AuthContextProps {
   user?: User;
+  loading?: boolean;
   loginGoogle?: () => Promise<void>;
   logout?: () => Promise<void>;
 }
@@ -84,13 +85,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       const cancel = firebase.auth().onIdTokenChanged(sessionUser)
       return () => cancel()
     }
+    setLoading(false)
   }, [])
 
   return (
     <AuthContext.Provider value={{
       user,
       loginGoogle,
-      logout
+      logout,
+      loading
     }}>
       {children}
     </AuthContext.Provider>

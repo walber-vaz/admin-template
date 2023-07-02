@@ -44,15 +44,22 @@ export default function auth(): JSX.Element {
   }
 
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="hidden md:block md:w-1/2 lg:w-2/3">
-        <img
-          src="https://source.unsplash.com/random"
+    <div className="flex h-screen items-center justify-center mx-auto max-w-7xl sm:w-3/4">
+      <div className="hidden md:flex items-center justify-center md:w-1/2 lg:w-2/3 p-10">
+        <Image
+          src="/dasbord.svg"
           alt="Imagem da tela de autenticação"
-          className="h-screen w-full object-cover bg-no-repeat"
+          width={500}
+          height={500}
+          className="object-cover w-full h-full"
         />
       </div>
-      <div className="w-full md:w-[600px] lg:h-1/3 m-10">
+      {/* bordar */}
+      <div
+        className={`
+          w-0.5 h-[680px] hidden md:block bg-gray-200
+        `}></div>
+      <div className="w-full md:w-1/2 lg:h-1/3 m-10 flex flex-col justify-center">
         <h1 className={`
           text-xl font-bold mb-5
         `}>

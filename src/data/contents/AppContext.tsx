@@ -1,9 +1,9 @@
-import { useState, createContext, ReactNode, useEffect, useCallback } from "react"
+import { ReactNode, createContext, useCallback, useEffect, useState } from "react"
 
-type TypeTheme = "dark" | ""
+// type TypeTheme = "dark" | ""
 
 interface AppContextProps {
-  theme?: TypeTheme
+  theme?: string
   altTheme?: () => void
   children?: ReactNode
 }
@@ -19,20 +19,17 @@ const AppContext = createContext<AppContextProps>({})
  * @return {JSX.Element} The JSX element representing the AppProvider.
  */
 export function AppProvider({ theme, children }: AppContextProps): JSX.Element {
-  const [currentTheme, setCurrentTheme] = useState<TypeTheme>(theme || "")
+  const [currentTheme, setCurrentTheme] = useState("dark")
 
   const toggleTheme = useCallback(() => {
     const newTheme = currentTheme === "" ? "dark" : ""
-    setCurrentTheme(newTheme)
     localStorage.setItem("theme", newTheme)
+    setCurrentTheme(newTheme)
   }, [currentTheme])
 
   useEffect(() => {
-    const localTheme = localStorage.getItem("theme") as TypeTheme;
-    if (!localTheme) {
-      localStorage.setItem("theme", theme || "")
-    }
-    setCurrentTheme(localTheme)
+    const localTheme = localStorage.getItem("theme");
+    setCurrentTheme(localTheme ?? "dark")
   }, [theme])
 
   return (
